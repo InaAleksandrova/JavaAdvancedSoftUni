@@ -1,0 +1,37 @@
+package multidimensionalArraysExercises;
+
+import java.util.Scanner;
+
+public class MatrixOfPalindromes {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        int rows = scanner.nextInt();
+        int cols = scanner.nextInt();
+
+        String[][] matrix = new String[rows][cols];
+        char startLetter = 'a';
+
+        fillMatrix(rows, cols, matrix, startLetter);
+        printMatrix(matrix, rows, cols);
+    }
+
+    private static void fillMatrix(int rows, int cols, String[][] matrix, char startLetter) {
+        for (int row = 0; row < rows; row++) {
+            for (int col = 0; col < cols; col++) {
+                String palindrome = "" + startLetter + (char)(startLetter + col) + startLetter;
+                matrix[row][col] = palindrome;
+            }
+            startLetter++;
+            //startLetter = (char) (startLetter + 1);
+        }
+    }
+
+    public static void printMatrix (String[][] matrix, int rows, int cols) {
+        for (int row = 0; row < rows; row++) {
+            for (int col = 0; col < cols; col++) {
+                System.out.print(matrix[row][col] + " ");
+            }
+            System.out.println();
+        }
+    }
+}
