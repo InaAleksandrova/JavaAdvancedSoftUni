@@ -17,7 +17,12 @@ public class CopyBytes {
         int nextByte = inputStream.read();
 
        while (nextByte != -1) {
-           outputStream.write(nextByte);
+
+           if (nextByte == ' ' || nextByte == '\n') {
+               outputStream.write(nextByte);
+           } else {
+               outputStream.write(String.valueOf(nextByte).getBytes());
+           }
 
            nextByte = inputStream.read();
        }
